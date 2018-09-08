@@ -29,7 +29,7 @@ mkdir -p $local_dir
 lftp  << EOF
 set mirror:use-pget-n 2
 lftp -u $login,$pass $host
-mirror -c -P5 --no-perms --dereference $remote_dir $local_dir
+mirror -c -P5 --no-perms --dereference --log=/var/log/lftp.log $remote_dir $local_dir
 quit
 EOF
 

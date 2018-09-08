@@ -11,6 +11,7 @@ ADD scripts /var/scripts
 RUN chmod 0644 /etc/cron.d/hello-cron
 
 RUN touch /var/log/cron.log
+RUN touch /var/log/lftp.log
 
 RUN mkdir -p /media
 
