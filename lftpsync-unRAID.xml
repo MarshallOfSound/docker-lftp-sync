@@ -50,7 +50,6 @@
       <Mode>rw</Mode>
     </Volume>
   </Data>
-<WebUI>http://[IP]:[PORT:8085]/~</WebUI>
-<Icon>https://raw.githubusercontent.com/MarshallOfSound/plex-mia/master/logo.png</Icon>
-<ExtraParams></ExtraParams>
+  <Icon>https://raw.githubusercontent.com/MarshallOfSound/docker-lftp-sync/master/logo.png</Icon>
+  <ExtraParams></ExtraParams>
 </Container>
