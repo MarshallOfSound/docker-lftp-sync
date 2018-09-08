@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+  <Beta>False</Beta>
+  <Category>MediaServer:Video</Category>
+  <Date>2018-09-07</Date>
+  <Changes>Everything is Awesome</Changes>
+  <Name>LFTP Sync</Name>
+  <Support>https://github.com/MarshallOfSound/docker-lftp-sync/issues</Support>
+  <Description>
+    [b]LFTP Sync[/b][br][br]
+ 
+    Docker image for LFTP sync for unRAID[br][br]
+
+    You should mount your target directories at "/media/{YOUR_DIR}"
+  </Description>
+  <Project>https://github.com/MarshallOfSound/docker-lftp-sync</Project>
+  <Registry>https://hub.docker.com/r/marshallofsound/lftp-sync/</Registry>
+  <Repository>marshallofsound/lftp-sync</Repository>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+  <Environment>
+    <Variable>
+      <Name>LFTP_USER</Name>
+      <Value>ftp username</Value>
+    </Variable>
+    <Variable>
+      <Name>LFTP_PASSWORD</Name>
+      <Value>ftp password</Value>
+    </Variable>
+    <Variable>
+      <Name>LFTP_HOST</Name>
+      <Value>ip address for ftp</Value>
+    </Variable>
+    <Variable>
+      <Name>LFTP_REMOTE_DIR</Name>
+      <Value>base remote dir for sync</Value>
+    </Variable>
+    <Variable>
+      <Name>LFTP_DIRS</Name>
+      <Value>semicolon separated list of dirs to sync</Value>
+    </Variable>
+  </Environment>
+  <Networking>
+    <Mode>bridge</Mode>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/cache/appdata/lftp-sync</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+<WebUI>http://[IP]:[PORT:8085]/~</WebUI>
+<Icon>https://raw.githubusercontent.com/MarshallOfSound/plex-mia/master/logo.png</Icon>
+<ExtraParams></ExtraParams>
+</Container>

@@ -41,7 +41,7 @@ EOF
   export IFS=";"
   for dir in $LFTP_DIRS; do
     export IFS=$old_ifs
-    echo "$dir"
+    sync_dir "$dir"
     export IFS=";"
   done
 
