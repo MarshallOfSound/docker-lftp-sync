@@ -1,4 +1,6 @@
 #!/bin/bash
+source /env.sh
+
 login=$LFTP_USER
 pass=$LFTP_PASSWORD
 host=$LFTP_HOST

@@ -15,4 +15,4 @@ RUN touch /var/log/lftp.log
 
 RUN mkdir -p /media
 
-CMD cron && tail -f /var/log/cron.log
+CMD printenv | sed 's/^\(.*\)$/export \1/g' > /env.sh && cron && tail -f /var/log/cron.log
