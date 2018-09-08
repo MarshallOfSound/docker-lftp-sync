@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 RUN apt update && apt install -y \
     lftp \
     cron \
+    vim \
  && apt upgrade -y && rm -rf /var/lib/apt/lists/*
 
 ADD crontab /etc/cron.d/hello-cron
