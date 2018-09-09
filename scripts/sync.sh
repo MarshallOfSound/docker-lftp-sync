@@ -29,9 +29,9 @@ echo "Syncing $remote_dir --> $local_dir"
 mkdir -p $local_dir
 
 lftp  << EOF
-set mirror:use-pget-n 2
+set mirror:use-pget-n 4
 lftp -u $login,$pass $host
-mirror -c -P5 --no-perms --dereference --log=/var/log/lftp.log $remote_dir $local_dir
+mirror -c -P4 --no-perms --dereference --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
 quit
 EOF
 
