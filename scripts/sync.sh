@@ -46,6 +46,7 @@ EOF
     sync_dir "$dir"
     export IFS=";"
   done
+  export IFS=$old_ifs
 
   echo "Sync Done: $(date)"
 
