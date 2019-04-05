@@ -7,8 +7,6 @@ host=$LFTP_HOST
 base_remote_dir=$LFTP_REMOTE_DIR
 base_local_dir=/media
 
-trap "rm -f /config/synctorrent.lock" EXIT
-
 set -e
 
 if [ -e /config/synctorrent.lock ]
@@ -17,7 +15,8 @@ then
   exit 1
 else
   touch /config/synctorrent.lock
-  
+
+trap "rm -f /config/synctorrent.lock" EXIT
 
 sync_dir() {
 
