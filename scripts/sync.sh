@@ -7,7 +7,7 @@ host=$LFTP_HOST
 base_remote_dir=$LFTP_REMOTE_DIR
 base_local_dir=/media
 
-trap "rm -f /config/synctorrent.lock" SIGINT SIGTERM
+trap "rm -f /config/synctorrent.lock" EXIT
 
 set -e
 
