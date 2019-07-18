@@ -34,6 +34,8 @@ mirror -c -P4 --no-perms --dereference --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv
 quit
 EOF
 
+echo "sync_dir() done"
+
 }
 
   echo "Sync Starting: $(date)"
