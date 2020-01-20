@@ -32,6 +32,10 @@
       <Value>ip address for ftp</Value>
     </Variable>
     <Variable>
+      <Name>FILEBOT_URL</Name>
+      <Value>url to trigger filebot sync</Value>
+    </Variable>
+    <Variable>
       <Name>LFTP_REMOTE_DIR</Name>
       <Value>base remote dir for sync</Value>
     </Variable>
