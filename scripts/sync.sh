@@ -9,8 +9,6 @@ base_local_dir=/media
 
 set -e
 
-curl $FILEBOT_URL -u $LFTP_USER:$LFTP_PASSWORD
-
 if [ -e /config/synctorrent.lock ]
 then
   echo "Sync is running already."
