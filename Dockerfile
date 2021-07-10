@@ -1,7 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt update && apt install -y \
-    lftp=4.8.1-1ubuntu0.1 \
+    lftp \
     cron \
     vim \
     curl \
