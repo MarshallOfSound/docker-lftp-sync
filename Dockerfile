@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 RUN apt update && apt install -y \
-    lftp \
+    lftp=4.8.1-1ubuntu0.1 \
     cron \
     vim \
     curl \

@@ -3,7 +3,7 @@ source /env.sh
 
 login=$LFTP_USER
 pass=$LFTP_PASSWORD
-host=$LFTP_HOST
+host=sftp://$LFTP_HOST
 base_remote_dir=$LFTP_REMOTE_DIR
 base_local_dir=/media
 
@@ -28,6 +28,7 @@ echo "Syncing $remote_dir --> $local_dir"
 mkdir -p $local_dir
 
 lftp  << EOF
+set sftp:auto-confirm yes
 set mirror:use-pget-n 4
 lftp -u $login,$pass $host
 mirror -c -P4 --no-perms --dereference --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
