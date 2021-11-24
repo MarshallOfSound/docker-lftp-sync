@@ -31,7 +31,7 @@ lftp  << EOF
 set sftp:auto-confirm yes
 set mirror:use-pget-n 4
 lftp -u $login,$pass $host
-mirror -c -P4 --no-perms --dereference --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
+mirror -c -P4 --no-perms --dereference --Remove-source-files --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
 quit
 EOF
 
