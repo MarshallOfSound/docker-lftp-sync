@@ -23,17 +23,24 @@ sync_dir() {
 remote_dir=$base_remote_dir/$1
 local_dir=$base_local_dir/$1
 
-echo "Syncing $remote_dir --> $local_dir"
-
-mkdir -p $local_dir
-
-lftp  << EOF
-set sftp:auto-confirm yes
-set mirror:use-pget-n 4
-lftp -u $login,$pass $host
-mirror -c -P4 --no-perms --dereference --Remove-source-files --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
-quit
-EOF
+if [ -d "$DIR" ]
+then
+	if [ "$(ls -A $DIR)" ]; then
+    echo "Syncing $remote_dir --> $local_dir"
+    
+    mkdir -p $local_dir
+    
+    lftp  << EOF
+    set sftp:auto-confirm yes
+    set mirror:use-pget-n 4
+    lftp -u $login,$pass $host
+    mirror -c -P4 --no-perms --dereference --Remove-source-files --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
+    quit
+    EOF
+  else
+    echo "Skipping $remote_dir .. $local_dir is empty"
+  fi
+fi
 
 echo "sync_dir() done"
 
