@@ -9,14 +9,14 @@ base_local_dir=/media
 
 set -e
 
-if [ -e /config/synctorrent.lock ]
+if [ -e /config/lftp-sync.lock ]
 then
   echo "Sync is running already."
   exit 1
 else
-  touch /config/synctorrent.lock
+  touch /config/lftp-sync.lock
 
-trap "rm -f /config/synctorrent.lock" EXIT
+trap "rm -f /config/lftp-sync.lock" EXIT
 
 sync_dir() {
 
@@ -59,6 +59,6 @@ echo "sync_dir() done"
 
   echo "Sync Done: $(date)"
 
-  rm -f /config/synctorrent.lock
+  rm -f /config/lftp-sync.lock
   exit 0
 fi
