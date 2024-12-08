@@ -1,11 +1,8 @@
-FROM ubuntu:20.04
+FROM ghcr.io/linuxserver/baseimage-alpine:3.20-version-6315bc7d
 
-RUN apt update && apt install -y \
+RUN apk add -U --upgrade --no-cache \
     lftp \
-    cron \
-    vim \
-    curl \
- && apt upgrade -y && rm -rf /var/lib/apt/lists/*
+    apk-cron
 
 ADD crontab /etc/cron.d/hello-cron
 ADD scripts /var/scripts

@@ -6,17 +6,18 @@ pass=$LFTP_PASSWORD
 host=sftp://$LFTP_HOST
 base_remote_dir=$LFTP_REMOTE_DIR
 base_local_dir=/media
+parallel=${LFTP_PARALLEL:-4}
 
 set -e
 
-if [ -e /config/synctorrent.lock ]
+if [ -e /config/lftp-sync.lock ]
 then
   echo "Sync is running already."
   exit 1
 else
-  touch /config/synctorrent.lock
+  touch /config/lftp-sync.lock
 
-trap "rm -f /config/synctorrent.lock" EXIT
+trap "rm -f /config/lftp-sync.lock" EXIT
 
 sync_dir() {
 
@@ -34,9 +35,9 @@ then
     set sftp:auto-confirm yes
     set mirror:use-pget-n 4
     lftp -u $login,$pass $host
-    mirror -c -P4 --no-perms --dereference --Remove-source-files --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
+    mirror -c -P=$parallel --no-perms --dereference --Remove-source-files --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
     quit
-    EOF
+EOF
   else
     echo "Skipping $remote_dir .. $local_dir is empty"
   fi
@@ -59,6 +60,6 @@ echo "sync_dir() done"
 
   echo "Sync Done: $(date)"
 
-  rm -f /config/synctorrent.lock
+  rm -f /config/lftp-sync.lock
   exit 0
 fi
