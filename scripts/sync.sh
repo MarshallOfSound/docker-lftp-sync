@@ -36,7 +36,7 @@ then
     lftp -u $login,$pass $host
     mirror -c -P4 --no-perms --dereference --Remove-source-files --log=/var/log/lftp.log -x ^[^\\/]*$ -vvv $remote_dir $local_dir
     quit
-    EOF
+EOF
   else
     echo "Skipping $remote_dir .. $local_dir is empty"
   fi
