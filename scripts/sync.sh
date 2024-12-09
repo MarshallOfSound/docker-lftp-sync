@@ -24,9 +24,9 @@ sync_dir() {
 remote_dir=$base_remote_dir/$1
 local_dir=$base_local_dir/$1
 
-if [ -d "$DIR" ]
+if [ -d "$local_dir" ]
 then
-	if [ "$(ls -A $DIR)" ]; then
+	if [ "$(ls -A $local_dir)" ]; then
     echo "Syncing $remote_dir --> $local_dir"
     
     mkdir -p $local_dir
